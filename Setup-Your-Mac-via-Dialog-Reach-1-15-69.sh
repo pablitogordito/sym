@@ -1103,8 +1103,13 @@ function checkNetworkQualityConfigurations() {
     welcomeDialog "Configuration Three Estimated Seconds: $configurationThreeEstimatedSeconds"
     welcomeDialog "Configuration Three Estimate: $(printf '%dh:%dm:%ds\n' $((configurationThreeEstimatedSeconds/3600)) $((configurationThreeEstimatedSeconds%3600/60)) $((configurationThreeEstimatedSeconds%60)))"
 
+    configurationFourEstimatedSeconds=$( echo "scale=2; ((((( $configurationFourSize / $mbps ) * 60 ) * 60 ) * $correctionCoefficient ) + $configurationFourInstallBuffer)" | bc | sed 's/\.[0-9]*//' )
+    welcomeDialog "Configuration Four Estimated Seconds: $configurationFourEstimatedSeconds"
+    welcomeDialog "Configuration Four Estimate: $(printf '%dh:%dm:%ds\n' $((configurationFourEstimatedSeconds/3600)) $((configurationFourEstimatedSeconds%3600/60)) $((configurationFourEstimatedSeconds%60)))"
+
     welcomeDialog "Network Quality Test: Started: $dlStartDate, Ended: $dlEndDate; Download: $mbps Mbps, Responsiveness: $dlResponsiveness"
-    dialogUpdateWelcome "infobox: **Connection:**  \n- Download:  \n$mbps Mbps  \n\n**Estimates:**  \n- ${configurationOneName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationOneEstimatedSeconds/3600)) $((configurationOneEstimatedSeconds%3600/60)) $((configurationOneEstimatedSeconds%60)))  \n\n- ${configurationTwoName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationTwoEstimatedSeconds/3600)) $((configurationTwoEstimatedSeconds%3600/60)) $((configurationTwoEstimatedSeconds%60)))  \n\n- ${configurationThreeName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationThreeEstimatedSeconds/3600)) $((configurationThreeEstimatedSeconds%3600/60)) $((configurationThreeEstimatedSeconds%60)))"
+ #$#   dialogUpdateWelcome "infobox: **Connection:**  \n- Download:  \n$mbps Mbps  \n\n**Estimates:**  \n- ${configurationOneName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationOneEstimatedSeconds/3600)) $((configurationOneEstimatedSeconds%3600/60)) $((configurationOneEstimatedSeconds%60)))  \n\n- ${configurationTwoName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationTwoEstimatedSeconds/3600)) $((configurationTwoEstimatedSeconds%3600/60)) $((configurationTwoEstimatedSeconds%60)))  \n\n- ${configurationThreeName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationThreeEstimatedSeconds/3600)) $((configurationThreeEstimatedSeconds%3600/60)) $((configurationThreeEstimatedSeconds%60)))"
+    dialogUpdateWelcome "infobox: **Connection:** \n- Download:  \n$mbps Mbps  \n\n**Estimates:** \n- ${configurationOneName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationOneEstimatedSeconds/3600)) $((configurationOneEstimatedSeconds%3600/60)) $((configurationOneEstimatedSeconds%60)))  \n\n- ${configurationTwoName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationTwoEstimatedSeconds/3600)) $((configurationTwoEstimatedSeconds%3600/60)) $((configurationTwoEstimatedSeconds%60)))  \n\n- ${configurationThreeName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationThreeEstimatedSeconds/3600)) $((configurationThreeEstimatedSeconds%3600/60)) $((configurationThreeEstimatedSeconds%60)))  \n\n- ${configurationFourName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationFourEstimatedSeconds/3600)) $((configurationFourEstimatedSeconds%3600/60)) $((configurationFourEstimatedSeconds%60)))" # ADDED THIS LINE FOR CONFIGURATION FOUR
 
     # If option to lock the continue button is set to true, enable the continue button now to let the user progress
     if [[ "${lockContinueBeforeEstimations}" == "true" ]]; then
@@ -1918,7 +1923,8 @@ fi
 welcomeMessage+="\n\n---"
 
 if { [[ "${promptForConfiguration}" == "true" ]] && [[ "${welcomeDialog}" != "messageOnly" ]]; } then
-    welcomeMessage+="  \n\n#### Configurations  \n- **${configurationOneName}:** ${configurationOneDescription}  \n- **${configurationTwoName}:** ${configurationTwoDescription}  \n- **${configurationThreeName}:** ${configurationThreeDescription}"
+ #$#   welcomeMessage+="  \n\n#### Configurations  \n- **${configurationOneName}:** ${configurationOneDescription}  \n- **${configurationTwoName}:** ${configurationTwoDescription}  \n- **${configurationThreeName}:** ${configurationThreeDescription}"
+	welcomeMessage+="  \n\n#### Configurations  \n- **${configurationOneName}:** ${configurationOneDescription}  \n- **${configurationTwoName}:** ${configurationTwoDescription}  \n- **${configurationThreeName}:** ${configurationThreeDescription}  \n- **${configurationFourName}:** ${configurationFourDescription}"
 else
     welcomeMessage=${welcomeMessage//", select your preferred **Configuration**"/}
 fi
@@ -2727,6 +2733,198 @@ function policyJSONConfiguration() {
             }
             '
             ;;
+            
+        "${configurationFourName}" )
+
+            overlayoverride=""
+            policyJSON='
+            {
+                "steps": [
+                    {
+                        "listitem": "Rosetta",
+                        "subtitle": "Enables a Mac with Apple silicon to use apps built for an Intel processor",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_8bac19160fabb0c8e7bac97b37b51d2ac8f38b7100b6357642d9505645d37b52",
+                        "progresstext": "Rosetta enables a Mac with Apple silicon to use apps built for a Mac with an Intel processor.",
+                        "trigger_list": [
+                            {
+                                "trigger": "rosettaInstall",
+                                "validation": "None"
+                            },
+                            {
+                                "trigger": "rosetta",
+                                "validation": "Local"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "FileVault Disk Encryption",
+                        "subtitle": "FileVault provides full-disk encryption",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_f9ba35bd55488783456d64ec73372f029560531ca10dfa0e8154a46d7732b913",
+                        "progresstext": "FileVault is built-in to macOS and provides full-disk encryption to help prevent unauthorized access to your Mac.",
+                        "trigger_list": [
+                            {
+                                "trigger": "filevault",
+                                "validation": "Local"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "Sophos Endpoint",
+                        "subtitle": "Catches malware without relying on signatures",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_c70f1acf8c96b99568fec83e165d2a534d111b0510fb561a283d32aa5b01c60c",
+                        "progresstext": "You’ll enjoy next-gen protection with Sophos Endpoint which doesn’t rely on signatures to catch malware.",
+                        "trigger_list": [
+                            {
+                                "trigger": "sophosEndpoint",
+                                "validation": "/Applications/Sophos/Sophos Endpoint.app/Contents/Info.plist"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "Sophos Endpoint Services (Local)",
+                        "subtitle": "Ensures Sophos Endpoint services are running",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_0f68be689684a00a3a054d71a31e43e2362f96c16efa5a560fb61bc1bf41901c",
+                        "progresstext": "Locally validating Sophos Endpoint services …",
+                        "trigger_list": [
+                            {
+                                "trigger": "sophosEndpointServices",
+                                "validation": "Local"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "Sophos Endpoint Services (Remote)",
+                        "subtitle": "Ensures Sophos Endpoint services are running",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_0f68be689684a00a3a054d71a31e43e2362f96c16efa5a560fb61bc1bf41901c",
+                        "progresstext": "Remotely validating Sophos Endpoint services …",
+                        "trigger_list": [
+                            {
+                                "trigger": "symvSophosEndpointRTS",
+                                "validation": "Remote"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "Palo Alto GlobalProtect",
+                        "subtitle": "Virtual Private Network (VPN) connection to Church headquarters",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_acbf39d8904ad1a772cf71c45d93e373626d379a24f8b1283b88134880acb8ef",
+                        "progresstext": "Use Palo Alto GlobalProtect to establish a Virtual Private Network (VPN) connection to Church headquarters.",
+                        "trigger_list": [
+                            {
+                                "trigger": "globalProtect",
+                                "validation": "/Applications/GlobalProtect.app/Contents/Info.plist"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "Palo Alto GlobalProtect Services (Local)",
+                        "subtitle": "Ensures GlobalProtect services are running",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_709e8bdf0019e8faf9df85ec0a68545bfdb8bfa1227ac9bed9bba40a1fa8ff42",
+                        "progresstext": "Locally validating Palo Alto GlobalProtect services …",
+                        "trigger_list": [
+                            {
+                                "trigger": "globalProtect",
+                                "validation": "Local"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "Palo Alto GlobalProtect Services (Remote)",
+                        "subtitle": "Ensures GlobalProtect services are running",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_709e8bdf0019e8faf9df85ec0a68545bfdb8bfa1227ac9bed9bba40a1fa8ff42",
+                        "progresstext": "Remotely validating Palo Alto GlobalProtect services …",
+                        "trigger_list": [
+                            {
+                                "trigger": "symvGlobalProtect",
+                                "validation": "Remote"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "Microsoft 365",
+                        "subtitle": "Microsoft Office is now Microsoft 365",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_1801d1fdd81e19ce5eb0e567371377e7995bff32947adb7a94c5feea760edcb5",
+                        "progresstext": "Office is now Microsoft 365. Create, share, and collaborate with your favorite apps — all in one place — with Microsoft 365.",
+                        "trigger_list": [
+                            {
+                                "trigger": "microsoftOffice365",
+                                "validation": "/Applications/Microsoft Outlook.app/Contents/Info.plist"
+                            },
+                            {
+                                "trigger": "symvMicrosoftOffice365",
+                                "validation": "Remote"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "Microsoft Teams",
+                        "subtitle": "The hub for teamwork in Microsoft 365",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_dcb65709dba6cffa90a5eeaa54cb548d5ecc3b051f39feadd39e02744f37c19e",
+                        "progresstext": "Microsoft Teams is a hub for teamwork in Microsoft 365. Keep all your team’s chats, meetings and files together in one place.",
+                        "trigger_list": [
+                            {
+                                "trigger": "microsoftTeams",
+                                "validation": "/Applications/Microsoft Teams classic.app/Contents/Info.plist"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "Adobe Acrobat Reader",
+                        "subtitle": "Full-featured PDF reader",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_988b669ca27eab93a9bcd53bb7e2873fb98be4eaa95ae8974c14d611bea1d95f",
+                        "progresstext": "Views, prints, and comments on PDF documents, and connects to Adobe Document Cloud.",
+                        "trigger_list": [
+                            {
+                                "trigger": "adobeAcrobatReader",
+                                "validation": "/Applications/Adobe Acrobat Reader.app/Contents/Info.plist"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "Google Chrome",
+                        "subtitle": "Third-party Web browser",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_12d3d198f40ab2ac237cff3b5cb05b09f7f26966d6dffba780e4d4e5325cc701",
+                        "progresstext": "Google Chrome is a browser that combines a minimal design with sophisticated technology to make the Web faster.",
+                        "trigger_list": [
+                            {
+                                "trigger": "googleChrome",
+                                "validation": "/Applications/Google Chrome.app/Contents/Info.plist"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "Final Configuration",
+                        "subtitle": "Configures remaining Church settings",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_4723e3e341a7e11e6881e418cf91b157fcc081bdb8948697750e5da3562df728",
+                        "progresstext": "Finalizing Configuration …",
+                        "trigger_list": [
+                            {
+                                "trigger": "finalConfiguration",
+                                "validation": "None"
+                            },
+                            {
+                                "trigger": "reconAtReboot",
+                                "validation": "None"
+                            }
+                        ]
+                    },
+                    {
+                        "listitem": "Computer Inventory",
+                        "subtitle": "The listing of your Mac’s apps and settings",
+                        "icon": "https://ics.services.jamfcloud.com/icon/hash_ff2147a6c09f5ef73d1c4406d00346811a9c64c0b6b7f36eb52fcb44943d26f9",
+                        "progresstext": "A listing of your Mac’s apps and settings — its inventory — is sent automatically to the Jamf Pro server daily.",
+                        "trigger_list": [
+                            {
+                                "trigger": "recon",
+                                "validation": "recon"
+                            }
+                        ]
+                    }
+                ]
+            }
+            '
+            ;;
+            
 
         * ) # Catch-all (i.e., used when `welcomeDialog` is set to `video`, `messageOnly` or `false`)
 
