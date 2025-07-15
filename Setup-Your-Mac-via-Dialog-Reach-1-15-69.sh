@@ -172,7 +172,12 @@ configurationTwoInstallBuffer="0"           # Buffer time added to estimates to 
 configurationThreeName="Proton: Artist"
 configurationThreeDescription="Proton: Artist"
 configurationThreeSize="106"                # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes * 7.451) 
-configurationThreeInstallBuffer="0"         # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
+configurationThreeInstallBuffer="0"         # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable.
+
+configurationFourName="Proton: The Nuts"
+configurationFourDescription="Proton: The Nuts"
+configurationFourSize="106"                # Configuration four in Gibibits (i.e., Total File Size in Gigabytes * 7.451) 
+configurationFourInstallBuffer="0"         # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable.
 
 
 
