@@ -2087,7 +2087,7 @@ if [ "$promptForConfiguration" == "true" ] && [ -z "${presetConfiguration}" ]; t
                 "'"${configurationOneName}"'",
                 "'"${configurationTwoName}"'",
                 "'"${configurationThreeName}"'",
-                "'"${configurationThreeName}"'"
+                "'"${configurationFourName}"'"
             ]
         }'
 fi
