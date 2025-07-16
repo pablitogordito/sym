@@ -373,11 +373,11 @@ function finalise(){
                 supportContactMessage+="If you need assistance, please contact the **${supportTeamName}**:  \n"
 
                 if [[ -n "${supportTeamPhone}" ]]; then
-                    supportContactMessage+="- **Telephone:** ${supportTeamPhone}\n"
+                    supportContactMessage+="- **Service Desk Telephone:** ${supportTeamPhone}\n"
                 fi
 
                 if [[ -n "${supportTeamEmail}" ]]; then
-                    supportContactMessage+="- **Email:** ${supportTeamEmail}\n"
+                    supportContactMessage+="- **GETS Email:** ${supportTeamEmail}\n"
                 fi
                 
 #                 if [[ -n "${supportTeamChat}" ]]; then
