@@ -365,7 +365,8 @@ function finalise(){
             updateFailureDialog "Jamf Pro Policy Name Failures:"
             updateFailureDialog "${jamfProPolicyNameFailures}"
 
-            failureMessage="A failure has been detected, ${loggedInUserFirstname}. \n\nPlease complete the following steps:\n1. Reboot and login to your ${modelName}  \n2. Login to Self Service  \n3. Re-run any failed policy listed below  \n\nThe following failed:  \n${jamfProPolicyNameFailures}"
+#$#            failureMessage="A failure has been detected, ${loggedInUserFirstname}. \n\nPlease complete the following steps:\n1. Reboot and login to your ${modelName}  \n2. Login to Self Service  \n3. Re-run any failed policy listed below  \n\nThe following failed:  \n${jamfProPolicyNameFailures}"
+            failureMessage="A failure has been detected, ${loggedInUserFirstname}. \n\nPlease restart by clicking the button below, log into your ${modelName}, then contact the GETS Team to report the failures listed below \n\nThe following item(s) failed:  \n${jamfProPolicyNameFailures}"
             
             if [[ -n "${supportTeamName}" ]]; then
 
@@ -379,21 +380,21 @@ function finalise(){
                     supportContactMessage+="- **Email:** ${supportTeamEmail}\n"
                 fi
                 
-                if [[ -n "${supportTeamChat}" ]]; then
-                    supportContactMessage+="- **Online Chat:** ${supportTeamChatHyperlink}\n"
-                fi
+#                 if [[ -n "${supportTeamChat}" ]]; then
+#                     supportContactMessage+="- **Online Chat:** ${supportTeamChatHyperlink}\n"
+#                 fi
 
-                if [[ -n "${supportTeamWebsite}" ]]; then
-                    supportContactMessage+="- **Web**: ${supportTeamHyperlink}\n"
-                fi
+#                 if [[ -n "${supportTeamWebsite}" ]]; then
+#                     supportContactMessage+="- **Web**: ${supportTeamHyperlink}\n"
+#                 fi
 
                 if [[ -n "${supportKB}" ]]; then
                     supportContactMessage+="- **Knowledge Base Article:** ${supportTeamErrorKB}\n"
                 fi
                 
-                if [[ -n "${supportTeamHours}" ]]; then
-                    supportContactMessage+="- **Support Hours:** ${supportTeamHours}\n"
-                fi
+#                 if [[ -n "${supportTeamHours}" ]]; then
+#                     supportContactMessage+="- **Support Hours:** ${supportTeamHours}\n"
+#                 fi
             
             fi
 
