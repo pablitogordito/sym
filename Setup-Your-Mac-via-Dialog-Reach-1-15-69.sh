@@ -1888,37 +1888,38 @@ failureCommandFile=$( mktemp -u /var/tmp/dialogCommandFileFailure.XXX )
 
 welcomeTitle="Happy $( date +'%A' ), ${loggedInUserFirstname}!  \nWelcome to your new ${modelName}"
 
-welcomeMessage="Please enter the **required** information for your ${modelName}, select your preferred **Configuration** then click **Continue** to start applying settings to your new Mac. \n\nOnce completed, the **Wait** button will be enabled and you‘ll be able to review the results before restarting your ${modelName}."
+#$#welcomeMessage="Please enter the **required** information for your ${modelName}, select your preferred **Configuration** then click **Continue** to start applying settings to your new Mac. \n\nOnce completed, the **Wait** button will be enabled and you‘ll be able to review the results before restarting your ${modelName}."
+welcomeMessage="Please select your preferred **Configuration** according to your role at Reach, then click **Continue** to start applying settings to your new Mac. \n\nOnce completed, the **Wait** button will be enabled and you'll be able to review the results before restarting your Mac.  \n\nIf you are unsure of which configuration to select or need assistance, please contact the GETS team: ${supportTeamEmail}, or the Service Desk on ${supportTeamPhone}."
 
-if [[ -n "${supportTeamName}" ]]; then
-
-    welcomeMessage+="\n\nIf you need assistance, please contact the **${supportTeamName}**:  \n"
-
-    if [[ -n "${supportTeamPhone}" ]]; then
-        welcomeMessage+="- **Telephone**: ${supportTeamPhone}\n"
-    fi
-
-    if [[ -n "${supportTeamEmail}" ]]; then
-        welcomeMessage+="- **Email**: ${supportTeamEmail}\n"
-    fi
-    
-    if [[ -n "${supportTeamChat}" ]]; then
-        welcomeMessage+="- **Online Chat:** ${supportTeamChatHyperlink}\n"
-    fi
-
-    if [[ -n "${supportTeamWebsite}" ]]; then
-        welcomeMessage+="- **Web**: ${supportTeamHyperlink}\n"
-    fi
-
-    if [[ -n "${supportKB}" ]]; then
-        welcomeMessage+="- **Knowledge Base Article:** ${supportTeamErrorKB}\n"
-    fi
-
-    if [[ -n "${supportTeamHours}" ]]; then
-        welcomeMessage+="- **Support Hours:** ${supportTeamHours}\n"
-    fi
-    
-fi
+# if [[ -n "${supportTeamName}" ]]; then
+# 
+#     welcomeMessage+="\n\nIf you need assistance, please contact the **${supportTeamName}**:  \n"
+# 
+#     if [[ -n "${supportTeamPhone}" ]]; then
+#         welcomeMessage+="- **Telephone**: ${supportTeamPhone}\n"
+#     fi
+# 
+#     if [[ -n "${supportTeamEmail}" ]]; then
+#         welcomeMessage+="- **Email**: ${supportTeamEmail}\n"
+#     fi
+#     
+#     if [[ -n "${supportTeamChat}" ]]; then
+#         welcomeMessage+="- **Online Chat:** ${supportTeamChatHyperlink}\n"
+#     fi
+# 
+#     if [[ -n "${supportTeamWebsite}" ]]; then
+#         welcomeMessage+="- **Web**: ${supportTeamHyperlink}\n"
+#     fi
+# 
+#     if [[ -n "${supportKB}" ]]; then
+#         welcomeMessage+="- **Knowledge Base Article:** ${supportTeamErrorKB}\n"
+#     fi
+# 
+#     if [[ -n "${supportTeamHours}" ]]; then
+#         welcomeMessage+="- **Support Hours:** ${supportTeamHours}\n"
+#     fi
+#     
+# fi
 
 welcomeMessage+="\n\n---"
 
