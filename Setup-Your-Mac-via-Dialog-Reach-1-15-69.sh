@@ -161,22 +161,22 @@ configurationCatchAllInstallBuffer="0"      # Buffer time added to estimates to 
 
 configurationOneName="Proton: Sub Editor"
 configurationOneDescription="Proton: Sub Editor Apps"
-configurationOneSize="34"                   # Configuration One in Gibibits (i.e., Total File Size in Gigabytes * 7.451)
+configurationOneSize="22"                   # Configuration One in Gibibits (i.e., Total File Size in Gigabytes (2.9) * 7.451)
 configurationOneInstallBuffer="0"           # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
 configurationTwoName="Proton: Designer"
 configurationTwoDescription="Proton: Designer Apps"
-configurationTwoSize="62"                   # Configuration Two in Gibibits (i.e., Total File Size in Gigabytes * 7.451) 
+configurationTwoSize="22"                   # Configuration Two in Gibibits (i.e., Total File Size in Gigabytes * 7.451) 
 configurationTwoInstallBuffer="0"           # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
 configurationThreeName="Proton: Artist"
 configurationThreeDescription="Proton: Artist Apps"
-configurationThreeSize="106"                # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes * 7.451) 
+configurationThreeSize="22"                # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes * 7.451) 
 configurationThreeInstallBuffer="0"         # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
 configurationFourName="Proton: Artist Plus"
 configurationFourDescription="Proton: Artist Apps Plus"
-configurationFourSize="80"
+configurationFourSize="22"
 configurationFourInstallBuffer="0"
 
 ####################################################################################################
@@ -366,7 +366,7 @@ function finalise(){
             updateFailureDialog "${jamfProPolicyNameFailures}"
 
 #$#            failureMessage="A failure has been detected, ${loggedInUserFirstname}. \n\nPlease complete the following steps:\n1. Reboot and login to your ${modelName}  \n2. Login to Self Service  \n3. Re-run any failed policy listed below  \n\nThe following failed:  \n${jamfProPolicyNameFailures}"
-            failureMessage="A failure has been detected, ${loggedInUserFirstname}. \n\nPlease restart by clicking the button below, log into your ${modelName}, then contact the GETS Team to report the failures listed below \n\nThe following item(s) failed:  \n${jamfProPolicyNameFailures}"
+            failureMessage="A failure has been detected, ${loggedInUserFirstname}. \n\nPlease restart by clicking the button below, log back into your ${modelName}, then contact the GETS Team to report the failures listed below: \n\nThe following item(s) failed:  \n**${jamfProPolicyNameFailures}**"
             
             if [[ -n "${supportTeamName}" ]]; then
 
