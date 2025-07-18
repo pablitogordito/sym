@@ -166,17 +166,17 @@ configurationOneInstallBuffer="0"           # Buffer time added to estimates to 
 
 configurationTwoName="Proton: Designer"
 configurationTwoDescription="Proton: Designer Apps"
-configurationTwoSize="22"                   # Configuration Two in Gibibits (i.e., Total File Size in Gigabytes * 7.451) 
+configurationTwoSize="30"                   # Configuration Two in Gibibits (i.e., Total File Size in Gigabytes (4.1) * 7.451) 
 configurationTwoInstallBuffer="0"           # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
 configurationThreeName="Proton: Artist"
 configurationThreeDescription="Proton: Artist Apps"
-configurationThreeSize="22"                # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes * 7.451) 
+configurationThreeSize="74"                # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes (10)* 7.451) 
 configurationThreeInstallBuffer="0"         # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
 configurationFourName="Proton: Artist Plus"
 configurationFourDescription="Proton: Artist Apps Plus"
-configurationFourSize="22"
+configurationFourSize="89"                 # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes (12)* 7.451) 
 configurationFourInstallBuffer="0"
 
 ####################################################################################################
