@@ -160,22 +160,22 @@ configurationCatchAllSize="34"              # Catch-all Configuration in Gibibit
 configurationCatchAllInstallBuffer="0"      # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
 configurationOneName="Proton: Sub Editor"
-configurationOneDescription="Proton: Sub Editor Apps"
+configurationOneDescription="Adobe Incopy"
 configurationOneSize="22"                   # Configuration One in Gibibits (i.e., Total File Size in Gigabytes (2.9) * 7.451)
 configurationOneInstallBuffer="0"           # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
 configurationTwoName="Proton: Designer"
-configurationTwoDescription="Proton: Designer Apps"
+configurationTwoDescription="Adobe InDesign & InCopy"
 configurationTwoSize="30"                   # Configuration Two in Gibibits (i.e., Total File Size in Gigabytes (4.1) * 7.451) 
 configurationTwoInstallBuffer="0"           # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
 configurationThreeName="Proton: Artist"
-configurationThreeDescription="Proton: Artist Apps"
+configurationThreeDescription="Adobe InDesign & InCopy & Photoshop"
 configurationThreeSize="74"                # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes (10)* 7.451) 
 configurationThreeInstallBuffer="0"         # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
 configurationFourName="Proton: Artist Plus"
-configurationFourDescription="Proton: Artist Apps Plus"
+configurationFourDescription="Adobe InDesign & InCopy & Photoshop & Illustrator"
 configurationFourSize="89"                 # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes (12)* 7.451) 
 configurationFourInstallBuffer="0"
 
@@ -1926,7 +1926,7 @@ welcomeMessage+="\n\n---"
 
 if { [[ "${promptForConfiguration}" == "true" ]] && [[ "${welcomeDialog}" != "messageOnly" ]]; } then
  #$#   welcomeMessage+="  \n\n#### Configurations  \n- **${configurationOneName}:** ${configurationOneDescription}  \n- **${configurationTwoName}:** ${configurationTwoDescription}  \n- **${configurationThreeName}:** ${configurationThreeDescription}"
-	welcomeMessage+="  \n\n#### Configurations  \n- **${configurationOneName}:** ${configurationOneDescription}  \n- **${configurationTwoName}:** ${configurationTwoDescription}  \n- **${configurationThreeName}:** ${configurationThreeDescription}  \n- **${configurationFourName}:** ${configurationFourDescription}"
+    welcomeMessage+="  \n\n#### Configurations\n\n Each configuration includes the Reach core setup and applications, as well as the Adobe CC applications listed below:  \n- **${configurationOneName} -** ${configurationOneDescription}  \n- **${configurationTwoName} -** ${configurationTwoDescription}  \n- **${configurationThreeName} -** ${configurationThreeDescription}  \n- **${configurationFourName} -** ${configurationFourDescription}"
 else
     welcomeMessage=${welcomeMessage//", select your preferred **Configuration**"/}
 fi
