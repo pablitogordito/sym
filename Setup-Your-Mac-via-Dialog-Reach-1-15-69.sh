@@ -3123,7 +3123,7 @@ case ${completionActionOption} in
         ;;
 
     * )
-        button1textCompletionActionOption="Close"
+        button1textCompletionActionOption="Restart"
         progressTextCompletionAction=""
         ;;
 
