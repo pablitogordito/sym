@@ -2120,12 +2120,12 @@ welcomeJSON='
     "infobox" : "Analyzing …",
     "iconsize" : "198",
     "button1text" : "Continue",
-    "button2text" : "Quit",
     "infotext" : "'"${scriptVersion}"'",
     "blurscreen" : "true",
     "ontop" : "true",
     "titlefont" : "colour=#f8bd41, size=36",
     "messagefont" : "size=14",
+    "quitkey" : "k",
     "textfield" : [
         '${textFieldJSON}'
     ],
