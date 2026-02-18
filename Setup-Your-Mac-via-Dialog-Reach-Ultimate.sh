@@ -1085,7 +1085,7 @@ function checkNetworkQualityConfigurations() {
             dlEndDate="N/A; macOS ${osVersion}"
             ;;
 
-        12* | 13* | 14* | 15* )
+        12* | 13* | 14* | 15* | 26* )
             dlThroughput=$( get_json_value "$networkQualityTest" "dl_throughput")
             dlResponsiveness=$( get_json_value "$networkQualityTest" "dl_responsiveness" )
             dlStartDate=$( get_json_value "$networkQualityTest" "start_date" )
