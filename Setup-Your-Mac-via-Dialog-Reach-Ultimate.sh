@@ -159,27 +159,27 @@ correctionCoefficient="1.01"                # "Fudge factor" (to help estimate m
 configurationCatchAllSize="34"              # Catch-all Configuration in Gibibits (i.e., Total File Size in Gigabytes * 7.451)
 configurationCatchAllInstallBuffer="0"      # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
-configurationOneName="Proton: Sub Editor"
+configurationOneName="Print: Sub Editor"
 configurationOneDescription="Adobe Incopy"
 configurationOneSize="22"                   # Configuration One in Gibibits (i.e., Total File Size in Gigabytes (2.9) * 7.451)
 configurationOneInstallBuffer="0"           # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
-configurationTwoName="Proton: Designer"
+configurationTwoName="Print: Designer"
 configurationTwoDescription="Adobe InDesign & InCopy"
 configurationTwoSize="30"                   # Configuration Two in Gibibits (i.e., Total File Size in Gigabytes (4.1) * 7.451) 
 configurationTwoInstallBuffer="0"           # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
-configurationThreeName="Proton: Artist"
+configurationThreeName="Print: Artist"
 configurationThreeDescription="Adobe InDesign & InCopy & Photoshop"
 configurationThreeSize="74"                # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes (10)* 7.451) 
 configurationThreeInstallBuffer="0"         # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
-configurationFourName="Proton: Artist Plus"
+configurationFourName="Print: Artist Plus"
 configurationFourDescription="Adobe InDesign & InCopy & Photoshop & Illustrator"
 configurationFourSize="89"                 # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes (12)* 7.451) 
 configurationFourInstallBuffer="0"
 
-configurationFiveName="Online: No Adobe Apps"
+configurationFiveName="Digital: No Adobe Apps"
 configurationFiveDescription="Core Reach apps only for Online users"
 configurationFiveSize="20"  # Size in Gibibits (Gigabytes * 7.451)
 configurationFiveInstallBuffer="0"
