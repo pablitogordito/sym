@@ -184,6 +184,11 @@ configurationFiveDescription="Core Reach apps only for Online users"
 configurationFiveSize="20"  # Size in Gibibits (Gigabytes * 7.451)
 configurationFiveInstallBuffer="0"
 
+configurationSixName="Digital: Adobe Premiere Pro"
+configurationSixDescription="Adobe Premiere Pro - video editing & post-production"
+configurationSixSize="80"  # Size in Gibibits (Gigabytes * 7.451)
+configurationSixInstallBuffer="0"
+
 ####################################################################################################
 #
 # Functions
@@ -1117,10 +1122,12 @@ function checkNetworkQualityConfigurations() {
     welcomeDialog "Configuration Five Estimated Seconds: $configurationFiveEstimatedSeconds"
     welcomeDialog "Configuration Five Estimate: $(printf '%dh:%dm:%ds\n' $((configurationFiveEstimatedSeconds/3600)) $((configurationFiveEstimatedSeconds%3600/60)) $((configurationFiveEstimatedSeconds%60)))"
 
+	configurationSixEstimatedSeconds=$( echo "scale=2; ((((( $configurationSixSize / $mbps ) * 60 ) * 60 ) * $correctionCoefficient ) + $configurationSixInstallBuffer)" | bc | sed 's/\.[0-9]*//' )
+    welcomeDialog "Configuration Six Estimated Seconds: $configurationSixEstimatedSeconds"
+    welcomeDialog "Configuration Six Estimate: $(printf '%dh:%dm:%ds\n' $((configurationSixEstimatedSeconds/3600)) $((configurationSixEstimatedSeconds%3600/60)) $((configurationSixEstimatedSeconds%60)))"
+    
     welcomeDialog "Network Quality Test: Started: $dlStartDate, Ended: $dlEndDate; Download: $mbps Mbps, Responsiveness: $dlResponsiveness"
- #$#   dialogUpdateWelcome "infobox: **Connection:**  \n- Download:  \n$mbps Mbps  \n\n**Estimates:**  \n- ${configurationOneName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationOneEstimatedSeconds/3600)) $((configurationOneEstimatedSeconds%3600/60)) $((configurationOneEstimatedSeconds%60)))  \n\n- ${configurationTwoName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationTwoEstimatedSeconds/3600)) $((configurationTwoEstimatedSeconds%3600/60)) $((configurationTwoEstimatedSeconds%60)))  \n\n- ${configurationThreeName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationThreeEstimatedSeconds/3600)) $((configurationThreeEstimatedSeconds%3600/60)) $((configurationThreeEstimatedSeconds%60)))"
-  # dialogUpdateWelcome "infobox: **Connection:** \n- Download:  \n$mbps Mbps  \n\n**Estimates:** \n- ${configurationOneName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationOneEstimatedSeconds/3600)) $((configurationOneEstimatedSeconds%3600/60)) $((configurationOneEstimatedSeconds%60)))  \n\n- ${configurationTwoName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationTwoEstimatedSeconds/3600)) $((configurationTwoEstimatedSeconds%3600/60)) $((configurationTwoEstimatedSeconds%60)))  \n\n- ${configurationThreeName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationThreeEstimatedSeconds/3600)) $((configurationThreeEstimatedSeconds%3600/60)) $((configurationThreeEstimatedSeconds%60)))  \n\n- ${configurationFourName}:  \n$(printf '%dh:%dm:%ds\n' $((configurationFourEstimatedSeconds/3600)) $((configurationFourEstimatedSeconds%3600/60)) $((configurationFourEstimatedSeconds%60)))" # ADDED THIS LINE FOR CONFIGURATION FOUR
-	dialogUpdateWelcome "infobox: **Connection:** \n- Download: \n$mbps Mbps \n\n**Estimates:** \n- ${configurationOneName}: \n$(printf '%dh:%dm:%ds\n' $((configurationOneEstimatedSeconds/3600)) $((configurationOneEstimatedSeconds%3600/60)) $((configurationOneEstimatedSeconds%60))) \n\n- ${configurationTwoName}: \n$(printf '%dh:%dm:%ds\n' $((configurationTwoEstimatedSeconds/3600)) $((configurationTwoEstimatedSeconds%3600/60)) $((configurationTwoEstimatedSeconds%60))) \n\n- ${configurationThreeName}: \n$(printf '%dh:%dm:%ds\n' $((configurationThreeEstimatedSeconds/3600)) $((configurationThreeEstimatedSeconds%3600/60)) $((configurationThreeEstimatedSeconds%60))) \n\n- ${configurationFourName}: \n$(printf '%dh:%dm:%ds\n' $((configurationFourEstimatedSeconds/3600)) $((configurationFourEstimatedSeconds%3600/60)) $((configurationFourEstimatedSeconds%60))) \n\n- ${configurationFiveName}: \n$(printf '%dh:%dm:%ds\n' $((configurationFiveEstimatedSeconds/3600)) $((configurationFiveEstimatedSeconds%3600/60)) $((configurationFiveEstimatedSeconds%60)))"
+	dialogUpdateWelcome "infobox: **Connection:** \n- Download: \n$mbps Mbps \n\n**Estimates:** \n- ${configurationOneName}: \n$(printf '%dh:%dm:%ds\n' $((configurationOneEstimatedSeconds/3600)) $((configurationOneEstimatedSeconds%3600/60)) $((configurationOneEstimatedSeconds%60))) \n\n- ${configurationTwoName}: \n$(printf '%dh:%dm:%ds\n' $((configurationTwoEstimatedSeconds/3600)) $((configurationTwoEstimatedSeconds%3600/60)) $((configurationTwoEstimatedSeconds%60))) \n\n- ${configurationThreeName}: \n$(printf '%dh:%dm:%ds\n' $((configurationThreeEstimatedSeconds/3600)) $((configurationThreeEstimatedSeconds%3600/60)) $((configurationThreeEstimatedSeconds%60))) \n\n- ${configurationFourName}: \n$(printf '%dh:%dm:%ds\n' $((configurationFourEstimatedSeconds/3600)) $((configurationFourEstimatedSeconds%3600/60)) $((configurationFourEstimatedSeconds%60))) \n\n- ${configurationFiveName}: \n$(printf '%dh:%dm:%ds\n' $((configurationFiveEstimatedSeconds/3600)) $((configurationFiveEstimatedSeconds%3600/60)) $((configurationFiveEstimatedSeconds%60))) \n\n- ${configurationSixName}: \n$(printf '%dh:%dm:%ds\n' $((configurationSixEstimatedSeconds/3600)) $((configurationSixEstimatedSeconds%3600/60)) $((configurationSixEstimatedSeconds%60)))"
 
     # If option to lock the continue button is set to true, enable the continue button now to let the user progress
     if [[ "${lockContinueBeforeEstimations}" == "true" ]]; then
@@ -1935,10 +1942,7 @@ welcomeMessage="Please select your preferred **Configuration** according to your
 welcomeMessage+="\n\n---"
 
 if { [[ "${promptForConfiguration}" == "true" ]] && [[ "${welcomeDialog}" != "messageOnly" ]]; } then
- #$#   welcomeMessage+="  \n\n#### Configurations  \n- **${configurationOneName}:** ${configurationOneDescription}  \n- **${configurationTwoName}:** ${configurationTwoDescription}  \n- **${configurationThreeName}:** ${configurationThreeDescription}"
-   # welcomeMessage+="  \n\n#### Configurations\n\n Each configuration includes the Reach core setup and applications, as well as the Adobe CC applications listed below:  \n- **${configurationOneName} -** ${configurationOneDescription}  \n- **${configurationTwoName} -** ${configurationTwoDescription}  \n- **${configurationThreeName} -** ${configurationThreeDescription}  \n- **${configurationFourName} -** ${configurationFourDescription}"
-    welcomeMessage+="  \n\n#### Configurations\n\n Each configuration includes the Reach core setup and applications, as well as the Adobe CC applications listed below:  \n- **${configurationOneName} -** ${configurationOneDescription}  \n- **${configurationTwoName} -** ${configurationTwoDescription}  \n- **${configurationThreeName} -** ${configurationThreeDescription}  \n- **${configurationFourName} -** ${configurationFourDescription} \n- **${configurationFiveName} -** ${configurationFiveDescription}"
-
+	welcomeMessage+="  \n\n#### Configurations\n\n Each configuration includes the Reach core setup and applications, as well as the Adobe CC applications listed below:  \n- **${configurationOneName} -** ${configurationOneDescription}  \n- **${configurationTwoName} -** ${configurationTwoDescription}  \n- **${configurationThreeName} -** ${configurationThreeDescription}  \n- **${configurationFourName} -** ${configurationFourDescription} \n- **${configurationFiveName} -** ${configurationFiveDescription} \n- **${configurationSixName} -** ${configurationSixDescription}"
 else
     welcomeMessage=${welcomeMessage//", select your preferred **Configuration**"/}
 fi
@@ -2108,7 +2112,8 @@ if [ "$promptForConfiguration" == "true" ] && [ -z "${presetConfiguration}" ]; t
                 "'"${configurationTwoName}"'",
                 "'"${configurationThreeName}"'",
                 "'"${configurationFourName}"'",
-                "'"${configurationFiveName}"'"
+                "'"${configurationFiveName}"'",
+                "'"${configurationSixName}"'"
             ]
         }'
 fi
