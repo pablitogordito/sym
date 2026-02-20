@@ -39,7 +39,7 @@
 # Script Version and Jamf Pro Script Parameters
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-scriptVersion="1.15.100"
+scriptVersion="1.15.101"
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 scriptLog="${4:-"/var/log/org.churchofjesuschrist.log"}"                        # Parameter 4: Script Log Location [ /var/log/org.churchofjesuschrist.log ] (i.e., Your organization's default location for client-side logs)
 debugMode="${5:-"verbose"}"                                                     # Parameter 5: Debug Mode [ verbose (default) | true | false ]
@@ -179,13 +179,13 @@ configurationFourDescription="Adobe InDesign & InCopy & Photoshop & Illustrator"
 configurationFourSize="89"                 # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes (12)* 7.451) 
 configurationFourInstallBuffer="0"
 
-configurationFiveName="Digital: No Adobe Apps"
-configurationFiveDescription="Core Reach apps only for Online users"
+configurationFiveName="Digital: Writer / Reporter"
+configurationFiveDescription="Core Reach apps only - no Adobe apps"
 configurationFiveSize="20"  # Size in Gibibits (Gigabytes * 7.451)
 configurationFiveInstallBuffer="0"
 
-configurationSixName="Digital: Adobe Premiere Pro"
-configurationSixDescription="Adobe Premiere Pro - video editing & post-production"
+configurationSixName="Digital: Video Editor"
+configurationSixDescription="Adobe Premiere Pro"
 configurationSixSize="80"  # Size in Gibibits (Gigabytes * 7.451)
 configurationSixInstallBuffer="0"
 
@@ -2150,7 +2150,7 @@ welcomeJSON='
     "selectitems" : [
         '${selectItemsJSON}'
     ],
-    "height" : "700"
+    "height" : "800"
 }
 '
 
