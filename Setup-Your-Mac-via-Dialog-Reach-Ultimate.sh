@@ -161,32 +161,32 @@ configurationCatchAllInstallBuffer="0"      # Buffer time added to estimates to 
 
 configurationOneName="Print: Sub Editor"
 configurationOneDescription="Adobe Incopy"
-configurationOneSize="22"                   # Configuration One in Gibibits (i.e., Total File Size in Gigabytes (2.9) * 7.451)
+configurationOneSize="64"                   # Configuration One in Gibibits (i.e., Total File Size in Gigabytes (2.9) * 7.451)
 configurationOneInstallBuffer="0"           # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
 configurationTwoName="Print: Designer"
 configurationTwoDescription="Adobe InDesign & InCopy"
-configurationTwoSize="30"                   # Configuration Two in Gibibits (i.e., Total File Size in Gigabytes (4.1) * 7.451) 
+configurationTwoSize="80"                   # Configuration Two in Gibibits (i.e., Total File Size in Gigabytes (4.1) * 7.451) 
 configurationTwoInstallBuffer="0"           # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
 configurationThreeName="Print: Artist"
 configurationThreeDescription="Adobe InDesign & InCopy & Photoshop"
-configurationThreeSize="74"                # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes (10)* 7.451) 
+configurationThreeSize="96"                # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes (10)* 7.451) 
 configurationThreeInstallBuffer="0"         # Buffer time added to estimates to include installation time of packages, in seconds. Set to 0 to disable. 
 
 configurationFourName="Print: Artist Plus"
 configurationFourDescription="Adobe InDesign & InCopy & Photoshop & Illustrator"
-configurationFourSize="89"                 # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes (12)* 7.451) 
+configurationFourSize="106"                 # Configuration Three in Gibibits (i.e., Total File Size in Gigabytes (12)* 7.451) 
 configurationFourInstallBuffer="0"
 
 configurationFiveName="Digital: Writer / Reporter"
 configurationFiveDescription="Core Reach apps only - no Adobe apps"
-configurationFiveSize="20"  # Size in Gibibits (Gigabytes * 7.451)
+configurationFiveSize="60"  # Size in Gibibits (Gigabytes * 7.451)
 configurationFiveInstallBuffer="0"
 
 configurationSixName="Digital: Video Editor"
 configurationSixDescription="Adobe Premiere Pro"
-configurationSixSize="80"  # Size in Gibibits (Gigabytes * 7.451)
+configurationSixSize="70"  # Size in Gibibits (Gigabytes * 7.451)
 configurationSixInstallBuffer="0"
 
 ####################################################################################################
